@@ -2,8 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 //Al llamarlo asi se guarda en una variable(tasks) y se puede usar en el transcurso del programa
 import tasks from "./sample/tasks.json";
-
-console.log(tasks);
+import Tasks from "./components/Tasks";
 
 class App extends Component {
   state = {
@@ -13,9 +12,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        {this.state.tasks.map((e) => (
-          <p key={e.id}>{e.title} - {e.description} - {e.done} - {e.id}</p>
-        ))}
+        <Tasks tasks={this.state.tasks}/>
       </div>
     );
   }
