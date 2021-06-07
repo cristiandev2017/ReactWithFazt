@@ -1,22 +1,17 @@
 import './App.css';
 
+//Estoy creando otro componente
+function Helloworld()
+{
+  return (
+    <div id="hello">Component Helloworld</div>
+  )
+}
+
+//Lo llamo las veces que lo necesite, mas adelante se vera que se pueden cambiar sus propiedades con props
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <div>This is my component: <Helloworld/><Helloworld/><Helloworld/></div>
   );
 }
 
