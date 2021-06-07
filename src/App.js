@@ -1,46 +1,24 @@
-import React from "react";
+import React, { Component } from "react";
 import "./App.css";
+//Al llamarlo asi se guarda en una variable(tasks) y se puede usar en el transcurso del programa
+import tasks from "./sample/tasks.json";
 
-class Helloworld extends React.Component {
-  //Empezaremos a usar state, el cual me permite almacenar datos
+console.log(tasks);
+
+class App extends Component {
   state = {
-    //Nos permite ocultar y mostrar datos
-    show: true,
+    tasks: tasks,
   };
 
-  //Se creara un metodo en la clase
-  toggleShow= () =>{
-    this.setState({show:!this.state.show})
-  }
-
   render() {
-    if (this.state.show) {
-      return (
-        <div id="hello">
-          <h3>{this.props.subtitle}</h3>
-          {this.props.mytext}
-          {/* Aca se agrega un evento para cambiar por medio de state */}
-          <button onClick={this.toggleShow}>Toggle Show</button>
-        </div>
-      );
-    }else{
-      return <h1>There are not elements <button onClick={this.toggleShow}>Toggle Show</button> </h1>
-              
-    }
+    return (
+      <div>
+        {this.state.tasks.map((e) => (
+          <p key={e.id}>{e.title} - {e.description} - {e.done} - {e.id}</p>
+        ))}
+      </div>
+    );
   }
-}
-
-//Lo llamo las veces que lo necesite, mas adelante se vera que se pueden cambiar sus propiedades con props
-function App() {
-  return (
-    //Usaremos las propiedades o props
-    <div>
-      This is my component:{" "}
-      <Helloworld mytext="Hello Cristian" subtitle="loremp ispum" />
-      <Helloworld mytext="Hola Mundo" subtitle="Otro subtitulo" />
-      <Helloworld mytext="Hola Cristian" subtitle="Tercer subtitulo" />
-    </div>
-  );
 }
 
 export default App;
