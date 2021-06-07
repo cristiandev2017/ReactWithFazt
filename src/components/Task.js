@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from 'prop-types';
 
 class Task extends Component {
 
@@ -27,6 +28,12 @@ class Task extends Component {
   }
 }
 
+//Se utiliza proptypes para especificar los tipos de parametros (props) que recibiré
+Task.propTypes ={
+  task: PropTypes.object.isRequired
+}
+
+//Con esto se estiliza el boton pero por medio de una constante y un objeto
 const btnDelete = {
   fontSize: "18px",
   background: "#ea2027",
