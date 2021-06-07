@@ -1,27 +1,28 @@
-import './App.css';
+import "./App.css";
 
-//Estoy creando otro componente
-function Helloworld()
-{
+//Se define como props para utilizar las propiedades.
+function Helloworld(props) {
+  //Probaremos por console log como recibimos los props
+  console.log(props);
   return (
-    <div id="hello">Component Helloworld</div>
-  )
-}
-
-//Otra manera de crear un componente es por medio de una constante que creera una funcion de flecha la diferencia es que el return se obvia en este caso aunque se podria escribir 
-const App = () => <div>This is my component: <Helloworld /></div>
-
-//Otra forma de crearlo es por medio de una clase pero normalmente se hereda de react el component extendiendolo, el render me permite retornar ya que una clase no me permite hacerlo con su declaración
-class App extends React.Component {
-  render(){
-    return <div>This is my component: <Helloworld></Helloworld></div>
-  }
+    //me lo trae como un objeto y luego de esto me permite acceder a el en este caso solo tendremos de props mytext y tambien subtitle
+    <div id="hello">
+      <h3>{props.subtitle}</h3>
+      {props.mytext}
+    </div>
+  );
 }
 
 //Lo llamo las veces que lo necesite, mas adelante se vera que se pueden cambiar sus propiedades con props
 function App() {
   return (
-    <div>This is my component: <Helloworld/><Helloworld/><Helloworld/></div>
+    //Usaremos las propiedades o props
+    <div>
+      This is my component:{" "}
+      <Helloworld mytext="Hello Cristian" subtitle="loremp ispum" />
+      <Helloworld mytext="Hola Mundo" subtitle="Otro subtitulo"/>
+      <Helloworld mytext="Hola Cristian" subtitle="Tercer subtitulo"/>
+    </div>
   );
 }
 
