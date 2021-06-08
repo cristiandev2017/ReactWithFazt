@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import "./App.css";
 //Al llamarlo asi se guarda en una variable(tasks) y se puede usar en el transcurso del programa
 import tasks from "./sample/tasks.json";
@@ -43,13 +44,27 @@ class App extends Component {
   render() {
     return (
       <div>
-        <TaskForm addTask={this.addTask} />
-        <Tasks
-          tasks={this.state.tasks}
-          deleteTask={this.deleteTask}
-          checkDone={this.checkDone}
-        />
-        <Posts />
+        <Router>
+          <Link to="/">Home</Link>
+          <Link to="/posts">Posts</Link>
+          <Route
+            exact
+            path="/"
+            render={() => {
+              return (
+                <div>
+                  <TaskForm addTask={this.addTask} />
+                  <Tasks
+                    tasks={this.state.tasks}
+                    deleteTask={this.deleteTask}
+                    checkDone={this.checkDone}
+                  />
+                </div>
+              );
+            }}
+          ></Route>
+          <Route path="/posts" component={Posts}></Route>
+        </Router>
       </div>
     );
   }
